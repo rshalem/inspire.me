@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Welcome | inspire.me</title>
@@ -7,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="default.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'default.css' %}">
 
 </head>
 
@@ -166,6 +167,20 @@
             
             </div>
 
+        </div>
+    </section>
+
+    <section class="s7"> 
+        <div class="mail-wrapper">
+        
+            <form action="#" method="POST" class="sub-form">
+                <div class="subscribe-wrapper">
+                    <h4>Subscribe to my newsletter</h4>
+                    <input type="email" name="email" class="subscribe-input" placeholder="Your email">
+                    <div class="submit-btn">SUBMIT</div>
+                </div>
+            </form>
+            
         </div>
     </section>
 

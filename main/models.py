@@ -8,4 +8,11 @@ class Card(models.Model):
     likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.content.split('')[0]
+        return self.content
+
+class EmailStore(models.Model):
+    email = models.EmailField(max_length=255)
+
+    def __str__(self):
+        return self.email
+
