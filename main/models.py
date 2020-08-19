@@ -11,7 +11,7 @@ class Card(models.Model):
         return self.content
 
 class EmailStore(models.Model):
-    email = models.EmailField(max_length=255)
+    email = models.CharField(max_length=255)
 
     def __str__(self):
         return self.email

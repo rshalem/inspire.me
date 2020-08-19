@@ -173,12 +173,24 @@
     <section class="s7"> 
         <div class="mail-wrapper">
         
-            <form action="#" method="POST" class="sub-form">
-                <div class="subscribe-wrapper">
+            <form action="{% url 'main:add-email' %}" method="POST" class="sub-form">
+                {% csrf_token %}
+                
+                <div class="subscribe-wrapper">    
                     <h4>Subscribe to my newsletter</h4>
-                    <input type="email" name="email" class="subscribe-input" placeholder="Your email">
-                    <div class="submit-btn">SUBMIT</div>
+                    <input type="email" name="email" class="subscribe-input" placeholder="Your email" required >
+                    <div class="submit-btn">
+                        <input type="submit" value="SUBMIT" class="submit-click"> 
+                    </div>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert">
+                        <p style="font-family: 'Quicksand', sans-serif;">{{message}}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
+                
             </form>
             
         </div>
