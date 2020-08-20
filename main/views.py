@@ -5,7 +5,9 @@ from .models import Card, EmailStore
 
 
 def index(request):
-    return render(request, 'motivation.html')
+    quotes = Card.objects.all()
+    context = {'quotes': quotes}
+    return render(request, 'motivation.html', context)
 
 
 def add_email(request):

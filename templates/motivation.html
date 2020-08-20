@@ -38,102 +38,27 @@
         <div class="card-container">
             <div class="card-wrapper">
                 <!--1st card-->
-                <div class="motivation-item">
-                    <div class="quote-no">
-                        <h4>#1</h4>
-                    </div>
-
-                    <div class="motivation-item-wrap">
-                        <h4 class="quote">Finish what you started<br>Nobody will do it for you.inish what you started<br>Nobody will do it for you</h4>
-                    </div>
-
-                    <div class="other-info">
-                        <div class="author">
-                            <span>brocode</span>
-                            <a target="_blank" class="fa fa-instagram" href="#"></a>
+                {% for quote in quotes %}
+                    <div class="motivation-item">
+                        <div class="quote-no">
+                            <h4>#{{quote.index_no}}</h4>
                         </div>
-                        <span class="resource-date">07-08-2020</span>
 
-                    </div>
-
-                </div>
-                <!--2nd card-->
-                <div class="motivation-item">
-                    <div class="quote-no">
-                        <h4>#2</h4>
-                    </div>
-
-                    <div class="motivation-item-wrap">
-                        <h4 class="quote">Finish what you started<br>Nobody will do it for you.inish what you started<br>Nobody will do it for you</h4>
-                    </div>
-
-                    <div class="other-info">
-                        <div class="author">
-                            <span>brocode</span>
-                            <a target="_blank" class="fa fa-instagram" href="#"></a>
+                        <div class="motivation-item-wrap">
+                            <h4 class="quote">{{quote.content}}</h4>
                         </div>
-                        <span class="resource-date">07-08-2020</span>
 
-                    </div>
-                </div>
+                        <div class="other-info">
+                            <div class="author">
+                                <span>{{quote.said_by}}</span>
+                                <a target="_blank" class="fa fa-instagram" href="#"></a>
+                            </div>
+                            <span class="resource-date">07-08-2020</span>
 
-                <div class="motivation-item">
-                    <div class="quote-no">
-                        <h4>#3</h4>
-                    </div>
-
-                    <div class="motivation-item-wrap">
-                        <h4 class="quote">Finish what you started<br>Nobody will do it for you.inish what you started<br>Nobody will do it for you</h4>
-                    </div>
-
-                    <div class="other-info">
-                        <div class="author">
-                            <span>brocode</span>
-                            <a target="_blank" class="fa fa-instagram" href="#"></a>
                         </div>
-                        <span class="resource-date">07-08-2020</span>
 
                     </div>
-
-                </div>
-
-                <div class="motivation-item">
-                    <div class="quote-no">
-                        <h4>#2</h4>
-                    </div>
-
-                    <div class="motivation-item-wrap">
-                        <h4 class="quote">Finish what you started<br>Nobody will do it for you.inish what you started<br>Nobody will do it for you</h4>
-                    </div>
-
-                    <div class="other-info">
-                        <div class="author">
-                            <span>brocode</span>
-                            <a target="_blank" class="fa fa-instagram" href="#"></a>
-                        </div>
-                        <span class="resource-date">07-08-2020</span>
-
-                    </div>
-                </div>
-
-                <div class="motivation-item">
-                    <div class="quote-no">
-                        <h4>#2</h4>
-                    </div>
-
-                    <div class="motivation-item-wrap">
-                        <h4 class="quote">Finish what you started<br>Nobody will do it for you.inish what you started<br>Nobody will do it for you</h4>
-                    </div>
-
-                    <div class="other-info">
-                        <div class="author">
-                            <span>brocode</span>
-                            <a target="_blank" class="fa fa-instagram" href="#"></a>
-                        </div>
-                        <span class="resource-date">07-08-2020</span>
-
-                    </div>
-                </div>
+                {% endfor %}
               
                 
             </div>
@@ -163,7 +88,9 @@
                 
                 <h4 class="faq-question">Are these some famous motivational quotes ? </h4>
                 <p class="faq-answer">One can say that, but no these quotes are purely created by different coders out there, who were once or are a learner, speaking out the bitter truth & motivation related to it in this field </p>
-
+                
+                <h4 class="faq-question">How does this newsletter works ? </h4>
+                <p class="faq-answer">Everytime a new quote or saying is uploaded, all subscribed users will receive an update of that quote via mail provided. </p>
             
             </div>
 

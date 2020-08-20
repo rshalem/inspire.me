@@ -123,3 +123,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (BASE_DIR / 'static'),
+
+# console display, for development
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 25
+# EMAIL_HOST_USER = 'brocode.py@gmail.com'
+# EMAIL_HOST_PASSWORD = 'Zubi123@'
