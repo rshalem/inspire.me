@@ -13,7 +13,7 @@ def index(request):
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
 
-    context = {'quotes': quotes, 'page_obj': page_obj}
+    context = {'page_obj': page_obj}
     return render(request, 'motivation.html', context)
 
 
