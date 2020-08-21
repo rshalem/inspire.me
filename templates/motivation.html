@@ -17,7 +17,7 @@
     <section class="s1">
         <div class="main-container">
             <div class="navigation-bar">
-                <a class="brand" href=""> inspire<span><b>.me</b></span></a>
+                <a class="brand" href="{% url 'main:home'%}"> inspire<span><b>.me</b></span></a>
                 <a class="about" href="#about-sec">about</a>
      
             </div>
@@ -38,7 +38,7 @@
         <div class="card-container">
             <div class="card-wrapper">
                 <!--1st card-->
-                {% for quote in quotes %}
+                {% for quote in page_obj %}
                     <div class="motivation-item">
                         <div class="quote-no">
                             <h4>#{{quote.index_no}}</h4>
@@ -71,8 +71,17 @@
         <div class="main-container">
             <div class="pagination-block">
                 <ul id="number">
-                    <li class="page-no"><a href="">1</a></li>
-                    <li class="page-no"><a href="">2</a></li>
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+                    
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{page_obj.next_page_number}}">&gt;</a> </li>
+                    {% endif %}
                 </ul>
             </div>
 

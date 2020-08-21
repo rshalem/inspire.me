@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from .models import Card, EmailStore
@@ -6,7 +7,13 @@ from .models import Card, EmailStore
 
 def index(request):
     quotes = Card.objects.all()
-    context = {'quotes': quotes}
+    paginator = Paginator(quotes, 6)
+    
+    # getting the requested page number
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    context = {'quotes': quotes, 'page_obj': page_obj}
     return render(request, 'motivation.html', context)
 
 
