@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 
 from .models import Card, EmailStore
 
@@ -48,3 +49,14 @@ def email_valid(email_add):
         return False
     
     return True
+
+def email_validation(request):
+
+    email_val = request.GET.get('entered_email', None)
+
+    data = {}
+
+    if EmailStore.objects.filter(email=email_val).exists():
+        data['is_taken'] = True
+
+    return JsonResponse(data)
