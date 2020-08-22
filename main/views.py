@@ -19,44 +19,44 @@ def index(request):
 
 
 def add_email(request):
-    if request.method == "POST":
-        email = request.POST.get('email')
-    
-        if email_valid(email):
-            if not EmailStore.objects.filter(email=email).exists():
-                email_store = EmailStore.objects.create(email=email)
-                email_store.save()
-                messages.success(request, "Wohooo ! Thanks for joining")
-                return redirect('main:home')
-            
-            else:
-                messages.success(request, "Already exists")
-                return redirect('main:home')
-        
-        messages.success(request, "Invalid gmail address")
-        return redirect('main:home')
-        
+    """ajax post handling, data coming from frontend checked at backend
+       & sent back as a JSON response 
+    """
 
-    return render(request, 'motivation.html')
+    email_value = request.POST.get('email_val', None)
 
-def email_valid(email_add):
-    """checking email ends with @gmail.com"""
+    data = {}
+    if not EmailStore.objects.filter(email=email_value).exists() and not str(email_value).endswith('@gmail.com') and not str(email_value).split('@')[0].islower():
+        email_store = EmailStore.objects.create(email=email_value)
+        email_store.save()
+        data['status'] = True
 
-    if not str(email_add).endswith('@gmail.com'):
-        return False
+    else:
+        data['status'] = False
+
+    return JsonResponse(data)
+
+
+
+# def email_valid(email_add):
+#     """checking email ends with @gmail.com"""
+
+#     if not str(email_add).endswith('@gmail.com'):
+#         return False
     
-    elif not str(email_add).split('@')[0].islower():
-        return False
+#     elif not str(email_add).split('@')[0].islower():
+#         return False
     
-    return True
+#     return True
 
 def email_validation(request):
 
     email_val = request.GET.get('entered_email', None)
 
     data = {}
-
+    
     if EmailStore.objects.filter(email=email_val).exists():
         data['is_taken'] = True
+        data['email'] = email_val
 
     return JsonResponse(data)

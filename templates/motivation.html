@@ -110,7 +110,7 @@
     <section class="s7"> 
         <div class="mail-wrapper">
         
-            <form action="{% url 'main:add-email' %}" method="POST" class="sub-form">
+            <form action="{% url 'main:add-email' %}" method="POST" class="sub-form" id="email-form">
                 {% csrf_token %}
                 
                 <div class="subscribe-wrapper">    
@@ -159,12 +159,40 @@
                         $('#email-field').val("Already exists");
                         $('#email-field').css('background-color', '#FF0000');
                     }
-
                 }
 
             });
 
         });
+    </script>
+        
+    <script type="text/javascript">
+        $('#email-form').submit(function(e){
+            e.preventDefault();
+
+            /* here 'this' refers to the element that received the event ie #email-form*/
+            var slug = $(this).attr('action');
+            var email_val = $('.subscribe-input').val();
+
+            $.ajax({
+                type: "POST",
+                url: slug,
+                data: {'email_val': email_val, csrfmiddlewaretoken:'{{ csrf_token }}'},
+
+                success: function(data){
+                    if (data['status']){
+                        alert('Thanks for joining');
+                        $('#email-field').val('');
+                    }
+
+                    else{
+                        alert('Already exists');
+                    }
+                }
+            });
+
+        });
+
     </script>
 
 </body>
