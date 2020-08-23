@@ -26,7 +26,7 @@ def add_email(request):
     email_value = request.POST.get('email_val', None)
 
     data = {}
-    if not EmailStore.objects.filter(email=email_value).exists() and not str(email_value).endswith('@gmail.com') and not str(email_value).split('@')[0].islower():
+    if not EmailStore.objects.filter(email=email_value).exists() and str(email_value).endswith('@gmail.com') and str(email_value).split('@')[0].islower():
         email_store = EmailStore.objects.create(email=email_value)
         email_store.save()
         data['status'] = True
@@ -57,6 +57,6 @@ def email_validation(request):
     
     if EmailStore.objects.filter(email=email_val).exists():
         data['is_taken'] = True
-        data['email'] = email_val
+        # data['email'] = email_val
 
     return JsonResponse(data)

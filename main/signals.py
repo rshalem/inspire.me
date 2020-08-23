@@ -20,6 +20,6 @@
 #         instance.save()
 
 
-"""if you create a separate signals make sure to add it in AppConfig file
+"""if you create a separate signals make sure to add it in AppConfig file inside ready function
 and then use <app_name>.apps.<app_nameConfig> rather only app name in INSTALLED APPS
 if u don't, then add default_app_config = '<app_name>.apps.<app_nameConfig>' in init.py"""
