@@ -22,7 +22,7 @@ def index(request):
 
 def email_service_provider_valid(email):
     """Checking the email-service provider"""
-    
+
     email_domains = ['@gmail.com', '@hotmail.com', '@yahoo.com']
     for d in email_domains:
         if str(email).endswith(d):
@@ -36,8 +36,6 @@ def add_email(request):
     """
 
     email_value = request.POST.get('email_val', None)
-
-    
     data = {}
     if not EmailStore.objects.filter(email=email_value).exists() and str(email_value).split('@')[0].islower():
         if email_service_provider_valid(email_value):
@@ -55,6 +53,7 @@ def add_email(request):
 
 
 def email_validation(request):
+    """checking email already taken or not"""
 
     email_val = request.GET.get('entered_email', None)
 
@@ -62,6 +61,5 @@ def email_validation(request):
     
     if EmailStore.objects.filter(email=email_val).exists():
         data['is_taken'] = True
-        # data['email'] = email_val
 
     return JsonResponse(data)
