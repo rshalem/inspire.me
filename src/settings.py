@@ -116,7 +116,7 @@ STATIC_ROOT = (BASE_DIR / 'staticfiles')
 # url for serving static files
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ((BASE_DIR / 'static'),)
+#STATICFILES_DIRS = ((BASE_DIR / 'static'),)
 
 # console display, for development
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
