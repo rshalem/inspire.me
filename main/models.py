@@ -33,6 +33,3 @@ def post_card_save_email_send(sender, created, instance, **kwargs):
         message = quote.content + ' by ' + quote.said_by 
 
         send_mail(subject=subject, message=message, from_email='hello@xyz.com', recipient_list=all_mailing_list, fail_silently=False)
-
-    else:
-        instance.save()
