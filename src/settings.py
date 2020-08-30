@@ -111,12 +111,12 @@ USE_TZ = True
 
 
 # when collectstatic command run, all static will be stored in this folder which is created when cmd is called
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = (BASE_DIR / 'staticfiles')
 
 # url for serving static files
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = BASE_DIR / 'static'
+#STATICFILES_DIRS = (BASE_DIR / 'static'),
 
 # console display, for development
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
