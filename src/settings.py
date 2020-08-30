@@ -16,7 +16,7 @@ SECRET_KEY = '8dj1q+ki1dro%y9j4+5j%6+c&9n4r)m=hkz9w50pu--5u1z4)$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','inspired-me.herokuapp.com', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','inspired-me.herokuapp.com']
 
 
 # Application definition
@@ -116,7 +116,7 @@ STATIC_ROOT = (BASE_DIR / 'staticfiles')
 # url for serving static files
 STATIC_URL = '/static/'
 
-#STATICFILES_DIRS = ((BASE_DIR / 'static'),)
+STATICFILES_DIRS = ((BASE_DIR / 'static'),)
 
 # console display, for development
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
