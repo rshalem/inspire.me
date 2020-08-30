@@ -10,6 +10,7 @@ class Card(models.Model):
     index_no = models.CharField(max_length=10)
     content = models.TextField()
     said_by = models.CharField(max_length=50)
+    insta_link = models.CharField(max_length=100, default="")
     likes = models.IntegerField(default=0, blank=True, null=True)
 
     def __str__(self):
