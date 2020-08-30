@@ -14,9 +14,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','inspired-me.herokuapp.com', ]
 
 
 # Application definition
@@ -107,17 +107,23 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+# when collectstatic command run, all static will be stored in this folder which is created when cmd is called
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# url for serving static files
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (BASE_DIR / 'static'),
 
 # console display, for development
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 25
-# EMAIL_HOST_USER = 'brocode.py@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Zubi123@'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
