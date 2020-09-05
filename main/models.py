@@ -12,6 +12,7 @@ class Card(models.Model):
     said_by = models.CharField(max_length=50)
     insta_link = models.CharField(max_length=100, default="")
     likes = models.IntegerField(default=0, blank=True, null=True)
+    date_created = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.content
