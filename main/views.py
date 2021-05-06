@@ -2,11 +2,10 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-from django.views.decorators.cache import cache_page
+#from django.views.decorators.cache import cache_page
 
 from .models import Card, EmailStore
 
-@cache_page(60*60)
 def index(request):
     """Displays all cards with pagination"""
     quotes = Card.objects.all()
