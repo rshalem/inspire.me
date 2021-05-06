@@ -119,11 +119,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
+# url for serving static files
+STATIC_URL = '/static/'
 
 # when collectstatic command run, all static will be stored in this folder which is created when cmd is called
 STATIC_ROOT = (BASE_DIR / 'staticfiles')
-
-# url for serving static files
-STATIC_URL = '/static/'
 
 STATICFILES_DIRS = ((BASE_DIR / 'static'),)
