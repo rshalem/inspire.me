@@ -2,13 +2,13 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.views.decorators.cache import cache_page
 
 from .models import Card, EmailStore
 
-
+@cache_page(60*60)
 def index(request):
     """Displays all cards with pagination"""
-
     quotes = Card.objects.all()
     paginator = Paginator(quotes, 6)
     
@@ -34,7 +34,6 @@ def add_email(request):
     """ajax post handling, data coming from frontend checked at backend
        & sent back as a JSON response 
     """
-
     email_value = request.POST.get('email_val', None)
     data = {}
     if not EmailStore.objects.filter(email=email_value).exists() and str(email_value).split('@')[0].islower():
@@ -45,7 +44,6 @@ def add_email(request):
         
         else:
             data['status'] = False
-
     else:
         data['status'] = False
 
@@ -54,11 +52,8 @@ def add_email(request):
 
 def email_validation(request):
     """checking email already taken or not"""
-
     email_val = request.GET.get('entered_email', None)
-
     data = {}
-    
     if EmailStore.objects.filter(email=email_val).exists():
         data['is_taken'] = True
 

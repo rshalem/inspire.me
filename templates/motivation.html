@@ -10,18 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'default.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 
 <body>
-
     <section class="s1">
         <div class="main-container">
             <div class="navigation-bar">
                 <a class="brand" href="{% url 'main:home'%}"> inspire<span><b>.me</b></span></a>
                 <a class="about" href="#about-sec">about</a>
-                
-     
             </div>
         </div>
     </section>
@@ -58,11 +54,8 @@
                             <span class="resource-date">{{quote.date_created}}</span>
 
                         </div>
-
                     </div>
-                {% endfor %}
-              
-                
+                {% endfor %}    
             </div>
         </div>
 
@@ -102,7 +95,6 @@
                 
                 <h4 class="faq-question">How does this newsletter works ? </h4>
                 <p class="faq-answer">Everytime a new quote or saying is uploaded, all subscribed users will receive an update of that quote via mail provided. </p>
-            
             </div>
 
         </div>
@@ -141,10 +133,6 @@
         
     </section>
 
-
-    <!--ajax goes here-->
-    
-
     <script>
         /* ajax for email verification */
         $('#email-field').change(function(){
@@ -163,7 +151,6 @@
                         $('#email-field').css('background-color', '#FF0000');
                     }
                 }
-
             });
 
         });
@@ -198,5 +185,4 @@
         });
 
     </script>
-
 </body>

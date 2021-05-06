@@ -24,14 +24,14 @@ class EmailStore(models.Model):
     def __str__(self):
         return self.email
 
-@receiver(post_save, sender=Card)
-# sender to ensure receiver is only invoked when signal is sent by Card Model save
-def post_card_save_email_send(sender, created, instance, **kwargs):
-    if created:
-        all_mailing_list = EmailStore.objects.all()
-        subject = 'New post'
-        quote = Card.objects.order_by('-id')[0]
+# @receiver(post_save, sender=Card)
+# # sender to ensure receiver is only invoked when signal is sent by Card Model save
+# def post_card_save_email_send(sender, created, instance, **kwargs):
+#     if created:
+#         all_mailing_list = EmailStore.objects.all()
+#         subject = 'New post'
+#         quote = Card.objects.order_by('-id')[0]
 
-        message = quote.content + ' by ' + quote.said_by 
+#         message = quote.content + ' by ' + quote.said_by 
 
-        send_mail(subject=subject, message=message, from_email='hello@xyz.com', recipient_list=all_mailing_list, fail_silently=False)
+#         send_mail(subject=subject, message=message, from_email='hello@xyz.com', recipient_list=all_mailing_list, fail_silently=False)
