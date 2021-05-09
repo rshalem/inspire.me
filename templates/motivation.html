@@ -119,70 +119,22 @@
                     </div>
                     {% endfor %}
                     {% endif %}
-                </div>
-                
-            </form>
-            
+                </div>    
+            </form> 
         </div>
     </section>
 
     <section class="s4">
         <div class="footer">
             <p class="footer-content">Made with ❤️ by <a target="_blank" href="https://www.instagram.com/brocode.py/">@brocode.py</a></p>
-        </div>
-        
+        </div> 
     </section>
 
     <script>
-        /* ajax for email verification */
-        $('#email-field').change(function(){
-            var email = $(this).val();
-        
-            $.ajax({
-                type: "GET",
-                url: "{% url 'main:validate_email' %}",
-                data : {
-                    'entered_email': email
-                },
-                dataType: 'json',
-                success: function (data){
-                    if (data['is_taken']){
-                        $('#email-field').val("Already exists");
-                        $('#email-field').css('background-color', '#FF0000');
-                    }
-                }
-            });
-
-        });
-
+        $("#email-field").change(function(){var a=$(this).val();$.ajax({type:"GET",url:"{% url 'main:validate_email' %}",data:{entered_email:a},dataType:"json",success:function(a){a.is_taken&&($("#email-field").val("Already exists"),$("#email-field").css("background-color","#FF0000"))}})});
     </script>
         
     <script type="text/javascript">
-        $('#email-form').submit(function(e){
-            e.preventDefault();
-
-            /* here 'this' refers to the element that received the event ie #email-form*/
-            var slug = $(this).attr('action');
-            var email_val = $('.subscribe-input').val();
-
-            $.ajax({
-                type: "POST",
-                url: slug,
-                data: {'email_val': email_val, csrfmiddlewaretoken:'{{ csrf_token }}'},
-
-                success: function(data){
-                    if (data['status']){
-                        alert('Thanks for joining');
-                        $('#email-field').val('');
-                    }
-
-                    else{
-                        alert('Invalid');
-                    }
-                }
-            });
-
-        });
-
+        $("#email-form").submit(function(a){a.preventDefault();var t=$(this).attr("action"),e=$(".subscribe-input").val();$.ajax({type:"POST",url:t,data:{email_val:e,csrfmiddlewaretoken:"{{ csrf_token }}"},success:function(a){a.status?(alert("Thanks for joining"),$("#email-field").val("")):alert("Invalid")}})});
     </script>
 </body>
