@@ -15,6 +15,9 @@ class Card(models.Model):
     date_created = models.DateField(auto_now_add=True)
 
     def __str__(self):
+        '''
+        string repr of card instances
+        '''
         return self.content
 
 
